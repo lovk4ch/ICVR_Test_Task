@@ -29,7 +29,7 @@ public:
 	UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly)
 	UStaticMeshComponent* Cube;
 
-	UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly)
+	UPROPERTY(BlueprintReadOnly)
 	UMaterialInstanceDynamic* MaterialInstance;
 
 	UFUNCTION(BlueprintCallable)
