@@ -14,7 +14,7 @@ ACube::ACube()
 	RootComponent = Root;
 	
 	Cube = CreateDefaultSubobject<UStaticMeshComponent>("Cube");
-	Cube->AttachToComponent(Root, FAttachmentTransformRules::KeepWorldTransform);
+	Cube->SetupAttachment(Root);
 }
 
 // Called when the game starts or when spawned

@@ -53,7 +53,7 @@ void AManager::Predict(FVector location)
 		if (Cube->WasRecentlyRendered())
 		{
 			const FLinearColor Color = GetColorByDistance(
-				FVector::Distance(Cube->GetRootComponent()->GetComponentLocation(), location)
+				FVector::DistSquared(Cube->GetRootComponent()->GetComponentLocation(), location)
 			);
 			Cube->SetColor("Color", Color);
 			RenderedCubesCount++;
@@ -61,11 +61,11 @@ void AManager::Predict(FVector location)
 	}
 }
 
-FLinearColor AManager::GetColorByDistance(float distance)
+FLinearColor AManager::GetColorByDistance(float squaredDist)
 {
 	if (L0_Current < L0)
 	{
-		if (distance < R0)
+		if (squaredDist < R0 * R0)
 		{
 			L0_Current++;
 			return FLinearColor::Blue;
@@ -74,7 +74,7 @@ FLinearColor AManager::GetColorByDistance(float distance)
 
 	if (L1_Current < L1)
 	{
-		if (distance < R1)
+		if (squaredDist < R1 * R1)
 		{
 			L1_Current++;
 			return FLinearColor::Yellow;

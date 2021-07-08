@@ -60,5 +60,5 @@ public:
 	void Predict(FVector location);
 
 	UFUNCTION()
-	FLinearColor GetColorByDistance(float distance);
+	FLinearColor GetColorByDistance(float squaredDist);
 };
