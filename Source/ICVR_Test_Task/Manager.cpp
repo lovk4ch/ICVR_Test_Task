@@ -20,15 +20,18 @@ void AManager::BeginPlay()
 	ACameraPawn* CameraPawn = Cast<ACameraPawn>(GetWorld()->GetFirstPlayerController()->GetPawn());
 	CameraPawn->BeforeCameraMoved.AddDynamic(this, &AManager::Predict);
 
-	for (int i = 0; i < 3000; i++)
+	if (IsValid(CubeActor))
 	{
-		ACube* Cube = GetWorld()->SpawnActor<ACube>(CubeActor.Get(),
-			FVector(
-				FMath::RandRange(-15000, 15000),
-				FMath::RandRange(-15000, 15000),
-				FMath::RandRange(25, 1175)),
-			FRotator());
-		Cubes.Add(Cube);
+		for (int i = 0; i < 3000; i++)
+		{
+			ACube* Cube = GetWorld()->SpawnActor<ACube>(CubeActor.Get(),
+				FVector(
+					FMath::RandRange(-15000, 15000),
+					FMath::RandRange(-15000, 15000),
+					FMath::RandRange(25, 1175)),
+				FRotator());
+			Cubes.Add(Cube);
+		}
 	}
 }
 
